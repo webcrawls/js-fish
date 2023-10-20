@@ -1,0 +1,1 @@
+export const notYetFished = "You haven't caught any fish."
