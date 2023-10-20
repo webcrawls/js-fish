@@ -8,7 +8,9 @@ This package is intended to be consumed by other Svelte/SvelteKit projects.
 
 ### Running the Demo Site
 
-...
+1. clone the repository
+2. `npm install` dependencies
+3. `npm run dev` in a terminal and visit the provided URL
 
 ### Using the Package Locally
 
