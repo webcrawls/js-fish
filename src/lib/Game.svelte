@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Inventory from "$lib/Inventory.svelte";
-    import Panel from "$lib/Panel.svelte";
+    import Inventory from "$lib/ui/Inventory.svelte";
+    import Panel from "$lib/ui/Panel.svelte";
     import './reset.css'
-    import {types} from "$lib/game.js";
+    import {types} from "$lib/game/game.js";
 
     let inventory = []
 
@@ -37,7 +37,7 @@
 
     .game {
         width: 100%;
-        height: 6rem;
+        height: 8rem;
         padding: 8px;
         background-color: teal;
     }

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {types} from "$lib/game";
+    import {types} from "$lib/game/game.js";
     export let inventory: string[] = []
 </script>
 
@@ -32,6 +32,7 @@
 
     .fish-grid {
         padding: 0.25rem;
+        font-size: 1.5rem;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);
