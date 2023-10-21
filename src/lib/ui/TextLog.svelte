@@ -1,13 +1,18 @@
 <script lang="ts">
-    export let items = [
-        "You have not caught any fish."
-    ]
+    import {log} from "$lib/game/ui";
+    import {onMount} from "svelte";
 
-    export const submit = (text: string) => items = [...items, text]
+    let container: HTMLElement
+
+    onMount(() => {
+        log.subscribe(v => {
+            container.scroll({ top: container.scrollHeight })
+        })
+    })
 </script>
 
-<div class="text-log">
-    {#each items as item}
+<div class="text-log" bind:this={container}>
+    {#each $log as item}
         <p>{item}</p>
     {/each}
 </div>
@@ -22,5 +27,6 @@
         color: #ffffb0;
         font-family: monospace;
         font-style: italic;
+        overflow-y: scroll;
     }
 </style>

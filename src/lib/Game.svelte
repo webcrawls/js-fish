@@ -2,29 +2,24 @@
     import Inventory from "$lib/ui/Inventory.svelte";
     import Panel from "$lib/ui/Panel.svelte";
     import './reset.css'
-    import {types} from "$lib/game/game.js";
+    import {setContext} from "svelte";
+    import {writable} from "svelte/store";
+    import InfoCard from "$lib/ui/InfoCard.svelte";
+    import {card} from "$lib/game/ui";
+    import {items} from "$lib/game/inventory.js";
 
-    let inventory = []
-
-    const fish = () => {
-        inventory = [...inventory, pickType().name]
-    }
-    const sell = (i) => {}
-
-    const pickType = () => {
-        const v = Object.values(types)
-        const c = v.length
-        const i = Math.floor(Math.random() * (c - 1))
-        return v[i]
-    }
+    const mousePos = writable({x: 0, y: 0})
+    setContext("mousePos", mousePos)
+    $: console.log($mousePos)
 </script>
+
+<svelte:window on:mousemove={(e) => $mousePos = {x: e.clientX, y: e.clientY}}/>
 
 <section class="game">
     <div class="game-inner">
-        <Panel caught="{inventory.length}" cash="{0}"
-               on:fish={fish}
-               on:sell={sell}/>
-        <Inventory {inventory}/>
+        <InfoCard visible={$card.visible} pos="{$mousePos}"/>
+        <Panel caught="{$items.length}" cash="{0}"/>
+        <Inventory items={$items}/>
     </div>
 </section>
 
